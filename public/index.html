@@ -109,6 +109,137 @@
         .btn-purple { background: linear-gradient(135deg, #7c3aed, var(--accent-purple)); }
         .btn-sm { padding: 4px 8px; font-size: 0.75rem; border-radius: 6px; }
 
+        /* تصميم العلم مع توسيط نص الله أكبر تماماً والحركة العكسية */
+        .iraqi-flag-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            perspective: 800px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .flag-box-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .flag-pole {
+            width: 5px;
+            height: 44px;
+            background: linear-gradient(90deg, #64748b, #cbd5e1, #475569);
+            border-radius: 3px;
+            position: relative;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+        }
+
+        .flag-pole::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -3.5px;
+            width: 12px;
+            height: 7px;
+            background: #f8fafc;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .iraqi-flag {
+            width: 75px;
+            height: 46px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 8px 18px rgba(0,0,0,0.6);
+            border-radius: 2px;
+            overflow: visible;
+            position: relative;
+            transform-origin: left center;
+            animation: reverseWaveMotion 3s ease-in-out infinite;
+        }
+
+        .flag-stripe {
+            flex: 1;
+            width: 100%;
+        }
+
+        .flag-red { background: #ce1126; }
+        .flag-white { 
+            background: #ffffff; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; /* توسيط محكم تماماً بالنص */
+            color: #000; 
+            font-size: 10px; 
+            font-weight: 900;
+            text-align: center;
+            width: 100%;
+        }
+        .flag-black { background: #000000; }
+
+        @keyframes reverseWaveMotion {
+            0% {
+                transform: perspective(400px) rotateY(0deg) rotateX(0deg) skewY(0deg) scaleX(1);
+                filter: brightness(100%);
+            }
+            25% {
+                transform: perspective(400px) rotateY(14deg) rotateX(-3deg) skewY(3deg) scaleX(1.05);
+                filter: brightness(90%);
+            }
+            50% {
+                transform: perspective(400px) rotateY(-10deg) rotateX(2deg) skewY(-2deg) scaleX(0.95);
+                filter: brightness(108%);
+            }
+            75% {
+                transform: perspective(400px) rotateY(6deg) rotateX(-1deg) skewY(1deg) scaleX(1.02);
+                filter: brightness(96%);
+            }
+            100% {
+                transform: perspective(400px) rotateY(0deg) rotateX(0deg) skewY(0deg) scaleX(1);
+                filter: brightness(100%);
+            }
+        }
+
+        /* تأثير تغير الألوان التلقائي والسريع إلى متوسط لنص جمهورية العراق وزارة التربية */
+        .rainbow-title {
+            font-size: 0.95rem;
+            font-weight: 900;
+            background: linear-gradient(270deg, #ff007f, #00ffcc, #ffcc00, #9900ff, #00ff66, #ff007f);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowAnimation 3s ease infinite;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @keyframes rainbowAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* شريط التنبيهات الملون */
+        .alert-banner {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2));
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-radius: 12px;
+            padding: 10px 15px;
+            color: #fde68a;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.5s ease-in-out;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+        }
+
         header {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -177,6 +308,7 @@
 
         th, td { padding: 8px 5px; border: 1px solid #cbd5e1; font-size: 0.75rem; color: #0f172a; }
         th { background: #f1f5f9; color: #0f172a; font-weight: 800; }
+        th span.period-time { display: block; font-size: 0.65rem; color: #64748b; font-weight: normal; margin-top: 2px; }
 
         .teacher-card {
             border-radius: 8px;
@@ -205,12 +337,13 @@
 
         .pdf-mode #printArea { padding: 5mm !important; border-radius: 0 !important; box-shadow: none !important; }
         .pdf-mode table { width: 100% !important; border-collapse: collapse !important; }
-        .pdf-mode th, .pdf-mode td { border: 1.5px solid #0f172a !important; padding: 4px 2px !important; font-size: 0.7rem !important; color: #0f172a !important; }
+        .pdf-mode th, .pdf-mode td { border: 1.5px solid #0f172a !important; padding: 6px 4px !important; font-size: 0.8rem !important; color: #0f172a !important; }
         .pdf-mode th { background: #e2e8f0 !important; color: #0f172a !important; }
-        .pdf-mode .teacher-card { color: #ffffff !important; font-size: 0.7rem !important; padding: 3px !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        .pdf-mode th span.period-time { color: #334155 !important; }
+        .pdf-mode .teacher-card { color: #ffffff !important; font-size: 0.7rem !important; padding: 3px !important; }
         .pdf-mode .card-actions { display: none !important; }
 
-        .admin-only, .teacher-only, .student-only { display: none; }
+        .programmer-only, .teacher-only, .student-only { display: none; }
 
         @media (max-width: 480px) {
             body { padding: 8px; }
@@ -248,6 +381,12 @@
             <button class="btn btn-red" style="padding: 6px 10px; font-size: 0.75rem;" onclick="handleLogout()">خروج</button>
         </div>
     </header>
+
+    <!-- شريط التنبيهات الملون -->
+    <div id="alertBanner" class="alert-banner no-print">
+        <span>🔔 تنبيه النظام:</span>
+        <span id="alertText"></span>
+    </div>
     
     <div class="panel no-print teacher-only">
         <h3>👨‍🏫 اختر اسم المعلم لعرض الجدول الخاص به</h3>
@@ -265,41 +404,105 @@
         </div>
     </div>
 
-    <div class="panel no-print admin-only">
-        <h3>📄 أدوات الإدارة والطباعة</h3>
+    <div class="panel no-print admin-view-panel" style="display: none;">
+        <h3>📄 أدوات الإدارة (عرض وطباعة فقط)</h3>
         <div class="form-row">
             <button class="btn btn-blue" onclick="exportGeneralPDF()">📥 تحميل الجدول العام (A4)</button>
+            <button class="btn btn-purple" onclick="exportTeachersReportPDF()">🖨️ طباعة تقرير الحصص والمواد</button>
+        </div>
+    </div>
+
+    <!-- لوحة تحكم المبرمج مع العلم المحدث وتأثير ألوان قوس قزح الديناميكية -->
+    <div class="panel no-print programmer-only">
+        <div class="iraqi-flag-container">
+            <div class="flag-box-wrapper">
+                <div class="flag-pole"></div>
+                <div class="iraqi-flag">
+                    <div class="flag-stripe flag-red"></div>
+                    <div class="flag-stripe flag-white">الله أكبر</div>
+                    <div class="flag-stripe flag-black"></div>
+                </div>
+            </div>
+            <span class="rainbow-title">جمهورية العراق - وزارة التربية (لوحة التحكم)</span>
+        </div>
+
+        <h3>📄 أدوات المبرمج والتحكم الكامل</h3>
+        <div class="form-row">
+            <button class="btn btn-blue" onclick="exportGeneralPDF()">📥 تحميل الجدول العام (A4)</button>
+            <button class="btn btn-purple" onclick="exportTeachersReportPDF()">🖨️ طباعة تقرير الحصص والمواد</button>
             <button class="btn btn-green" onclick="autoDistribute()">⚡ توزيع تلقائي ذكي</button>
             <button class="btn btn-red" onclick="clearFullSchedule()">🗑️ مسح كافة الحصص</button>
         </div>
     </div>
 
-    <div class="panel no-print admin-only">
+    <div class="panel no-print programmer-only">
+        <h3>⏰ تعديل أوقات الدروس والحصص يدوياً</h3>
+        <div class="form-row">
+            <select id="timePeriodSelect" onchange="loadPeriodTimeInput()"></select>
+            <input type="text" id="customPeriodTimeInput" placeholder="مثال: 08:00 - 08:45">
+            <button class="btn btn-blue" onclick="savePeriodTime()">💾 حفظ وقت الدرس</button>
+        </div>
+    </div>
+
+    <div class="panel no-print programmer-only">
         <h3>⚙️ إدخالات الإدارة العامة (المواد والمعلمون والصفوف)</h3>
         
         <div class="form-row">
-            <input type="text" id="newSubjectName" placeholder="اسم مادة جديدة">
+            <input type="text" id="newSubjectName" placeholder="اسم مادة جديدة (مثلاً: قراءة)">
             <button class="btn btn-blue" onclick="addSubject()">+ إضافة مادة</button>
             <select id="deleteSubjectSelect"></select>
             <button class="btn btn-red" onclick="deleteSubject()">حذف مادة</button>
         </div>
 
-        <div class="form-row">
+        <div class="form-row" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));">
             <input type="text" id="teacherName" placeholder="اسم المعلم الجديد">
+            <select id="teacherRestDay">
+                <option value="">بدون عطلة مخصصة</option>
+                <option value="السبت">عطلة: السبت</option>
+                <option value="الأحد">عطلة: الأحد</option>
+                <option value="الإثنين">عطلة: الإثنين</option>
+                <option value="الثلاثاء">عطلة: الثلاثاء</option>
+                <option value="الأربعاء">عطلة: الأربعاء</option>
+                <option value="الخميس">عطلة: الخميس</option>
+            </select>
             <button class="btn btn-green" onclick="addTeacher()">+ إضافة معلم</button>
+        </div>
+
+        <div class="form-row">
             <select id="deleteTeacherSelect"></select>
             <button class="btn btn-red" onclick="deleteTeacher()">حذف معلم</button>
         </div>
 
         <div class="form-row">
-            <input type="text" id="newClassName" placeholder="اسم الصف (مثال: الصف الرابع)">
+            <input type="text" id="newClassName" placeholder="اسم الصف (مثال: الصف الاول)">
             <button class="btn btn-purple" onclick="addClass()">+ إضافة صف</button>
             <button class="btn btn-purple" onclick="addPeriod()">إضافة درس</button>
             <button class="btn btn-red" onclick="removePeriod()">حذف درس</button>
         </div>
     </div>
 
-    <div class="panel no-print admin-only">
+    <div class="panel no-print programmer-only">
+        <h3>📊 تحديد الحصص الأسبوعية لكل مادة لكل صف</h3>
+        <div class="form-row">
+            <select id="configClassSelect"></select>
+            <select id="configSubjectSelect"></select>
+            <select id="configSubjectCount">
+                <option value="1">1 حصة أسبوعياً</option>
+                <option value="2">2 حصص أسبوعياً</option>
+                <option value="3" selected>3 حصص أسبوعياً</option>
+                <option value="4">4 حصص أسبوعياً</option>
+                <option value="5">5 حصص أسبوعياً</option>
+                <option value="6">6 حصص أسبوعياً</option>
+                <option value="7">7 حصص أسبوعياً</option>
+                <option value="8">8 حصص أسبوعياً</option>
+                <option value="9">9 حصص أسبوعياً</option>
+                <option value="10">10 حصص أسبوعياً</option>
+            </select>
+            <button class="btn btn-purple" onclick="saveSubjectQuota()">💾 حفظ الحصص للمادة</button>
+        </div>
+    </div>
+
+    <div class="panel no-print programmer-only">
         <h3>🎯 التوزيع والتعديل اليدوي للدروس</h3>
         <div class="form-row">
             <select id="selectDay"></select>
@@ -330,14 +533,19 @@
 
 <script>
     let currentUserRole = null;
+    let currentTeacherId = null;
+    let activeAlertsTracker = {};
 
     function handleLogin() {
         let pwd = document.getElementById("passwordInput").value.trim();
 
-        if (pwd === "12") {
+        if (pwd === "1") {
+            currentUserRole = 'programmer';
+        } else if (pwd === "12") {
             currentUserRole = 'admin';
-        } else if (pwd === "123") {
+        } else if (pwd === "132") {
             currentUserRole = 'teacher';
+            currentTeacherId = document.getElementById("teacherViewSelect")?.value || teachers[0].id;
         } else if (pwd === "0000") {
             currentUserRole = 'student';
         } else {
@@ -349,30 +557,105 @@
         document.getElementById("loginOverlay").style.display = "none";
         document.getElementById("passwordInput").value = "";
         document.getElementById("loginError").style.display = "none";
+        
+        if (window.Notification && Notification.permission !== "granted") {
+            Notification.requestPermission();
+        }
+
         applyPermissions();
     }
 
     function handleLogout() {
         currentUserRole = null;
+        currentTeacherId = null;
         document.getElementById("loginOverlay").style.display = "flex";
+        document.getElementById("alertBanner").style.display = "none";
     }
 
+    function showNotification(msg, isUrgent = false) {
+        let banner = document.getElementById("alertBanner");
+        let txt = document.getElementById("alertText");
+        txt.innerText = msg;
+        
+        if (isUrgent) {
+            banner.style.background = "linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(220, 38, 38, 0.5))";
+            banner.style.borderColor = "#ef4444";
+            if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+        } else {
+            banner.style.background = "linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(239, 68, 68, 0.2))";
+            banner.style.borderColor = "rgba(245, 158, 11, 0.4)";
+        }
+        
+        banner.style.display = "flex";
+    }
+
+    setInterval(() => {
+        if (currentUserRole !== 'teacher') return;
+
+        let now = new Date();
+        let options = { weekday: 'long', timeZone: 'Asia/Baghdad' };
+        let todayName = new Intl.DateTimeFormat('ar-IQ', options).format(now);
+        
+        let hours = String(now.getHours()).padStart(2, '0');
+        let minutes = String(now.getMinutes()).padStart(2, '0');
+        let currentTimeStr = `${hours}:${minutes}`;
+
+        periods.forEach(p => {
+            let periodTimeFull = periodTimes[p] || "";
+            if (!periodTimeFull.includes("-")) return;
+            let startTime = periodTimeFull.split("-")[0].trim();
+
+            if (currentTimeStr === startTime) {
+                let cell = schedule[todayName]?.[p];
+                if (cell) {
+                    Object.keys(cell).forEach(className => {
+                        let lesson = cell[className];
+                        if (lesson && lesson.teacherId == currentTeacherId) {
+                            let alertKey = `${todayName}-${p}-${currentTeacherId}`;
+                            if (!activeAlertsTracker[alertKey]) {
+                                activeAlertsTracker[alertKey] = true;
+                                
+                                let alertMsg = `⚠️ تنبيه بدء الحصة (${p}) الآن! مادة (${lesson.subject}) في (${className}).`;
+                                showNotification(alertMsg, true);
+
+                                if (window.Notification && Notification.permission === "granted") {
+                                    new Notification("مدرسة براعم الغد - موعد حصتك الدراسية", {
+                                        body: `لديك الآن الحصة رقم ${p} لمادة ${lesson.subject} في الصف ${className}`,
+                                        icon: "🏫"
+                                    });
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }, 10000);
+
     function applyPermissions() {
-        let adminPanels = document.querySelectorAll('.admin-only');
+        let programmerPanels = document.querySelectorAll('.programmer-only');
+        let adminViewPanels = document.querySelectorAll('.admin-view-panel');
         let teacherPanels = document.querySelectorAll('.teacher-only');
         let studentPanels = document.querySelectorAll('.student-only');
 
-        adminPanels.forEach(el => el.style.display = 'none');
+        programmerPanels.forEach(el => el.style.display = 'none');
+        adminViewPanels.forEach(el => el.style.display = 'none');
         teacherPanels.forEach(el => el.style.display = 'none');
         studentPanels.forEach(el => el.style.display = 'none');
 
         let roleDisplay = document.getElementById("roleDisplay");
 
-        if(currentUserRole === 'admin') {
-            adminPanels.forEach(el => el.style.display = 'block');
-            roleDisplay.innerText = "صلاحية: الإدارة 👨‍💼";
+        if(currentUserRole === 'programmer') {
+            programmerPanels.forEach(el => el.style.display = 'block');
+            roleDisplay.innerText = "صلاحية: المبرمج ⚡";
             currentPrintFilter = { type: 'all', id: null };
-            document.getElementById("tableTitle").innerText = "جدول الحصص الأسبوعي - الجدول العام للإدارة";
+            document.getElementById("tableTitle").innerText = "جدول الحصص الأسبوعي - تحكم المبرمج الكامل";
+            loadPeriodTimeInput();
+        } else if(currentUserRole === 'admin') {
+            adminViewPanels.forEach(el => el.style.display = 'block');
+            roleDisplay.innerText = "صلاحية: الإدارة (عرض فقط) 👁️";
+            currentPrintFilter = { type: 'all', id: null };
+            document.getElementById("tableTitle").innerText = "جدول الحصص الأسبوعي - عرض الإدارة";
         } else if(currentUserRole === 'teacher') {
             teacherPanels.forEach(el => el.style.display = 'block');
             roleDisplay.innerText = "صلاحية: المعلم 👨‍🏫";
@@ -392,30 +675,52 @@
     ];
 
     const subjectIcons = {
-        "رياضيات": "📐", "علوم": "🧪", "عربي": "📖", "لغة عربية": "📖",
+        "رياضيات": "📐", "علوم": "🧪", "عربي": "📖", "قراءة": "📖", "لغة عربية": "📖",
         "انجليزي": "🔤", "لغة إنجليزية": "🔤", "حاسوب": "💻", "فنية": "🎨",
         "رياضة": "⚽", "إسلامية": "🕌", "دين": "🕌", "اجتماعيات": "🗺️"
     };
 
-    let availableSubjects = ["رياضيات", "علوم", "لغة عربية", "لغة إنجليزية", "إسلامية", "فنية", "رياضة"];
+    let periodTimes = {
+        1: "08:00 - 08:45",
+        2: "08:45 - 09:30",
+        3: "09:35 - 10:20",
+        4: "10:20 - 11:05",
+        5: "11:05 - 11:50",
+        6: "11:50 - 12:35",
+        7: "12:35 - 01:20",
+        8: "01:20 - 02:05",
+        9: "02:05 - 02:50",
+        10: "02:50 - 03:35"
+    };
+
+    let availableSubjects = ["رياضيات", "علوم", "قراءة", "لغة إنجليزية", "إسلامية", "فنية", "رياضة"];
 
     let teachers = [
-        { id: 1, name: "أ. أحمد", color: autoTeacherColors[0] },
-        { id: 2, name: "أ. سارة", color: autoTeacherColors[1] },
-        { id: 3, name: "أ. علي", color: autoTeacherColors[2] }
+        { id: 1, name: "أ. أحمد", color: autoTeacherColors[0], restDay: "" },
+        { id: 2, name: "أ. سارة", color: autoTeacherColors[1], restDay: "" },
+        { id: 3, name: "أ. علي", color: autoTeacherColors[2], restDay: "" }
     ];
     
     let days = ["الأحد", "الإثنين", "الثلاثاء", "الأربعاء", "الخميس"];
     let periods = [1, 2, 3, 4, 5];
-    let classes = ["الصف الأول", "الصف الثاني", "الصف الثالث"];
-    let schedule = {};
+    let classes = ["الصف الاول", "الصف الثاني", "الصف الثالث"];
+    
+    let subjectQuotas = {
+        "الصف الاول": { "قراءة": 3, "رياضيات": 3 },
+        "الصف الثاني": { "قراءة": 3, "رياضيات": 3 },
+        "الصف الثالث": { "قراءة": 3, "رياضيات": 3 }
+    };
 
+    let schedule = {};
     let currentPrintFilter = { type: 'all', id: null };
 
     function init() {
         days.forEach(d => {
             schedule[d] = schedule[d] || {};
             periods.forEach(p => schedule[d][p] = schedule[d][p] || {});
+        });
+        classes.forEach(c => {
+            subjectQuotas[c] = subjectQuotas[c] || {};
         });
         updateDropdowns();
         renderHeader();
@@ -445,14 +750,55 @@
         if(dSelect) dSelect.innerHTML = days.map(d => `<option value="${d}">${d}</option>`).join('');
 
         let pSelect = document.getElementById("selectPeriod");
-        if(pSelect) pSelect.innerHTML = periods.map(p => `<option value="${p}">الدرس ${p}</option>`).join('');
+        if(pSelect) pSelect.innerHTML = periods.map(p => `<option value="${p}">الدرس ${p} (${periodTimes[p] || ''})</option>`).join('');
 
         let cSelect = document.getElementById("selectClass");
         if(cSelect) cSelect.innerHTML = classes.map(c => `<option value="${c}">${c}</option>`).join('');
+
+        let cfgClass = document.getElementById("configClassSelect");
+        if(cfgClass) cfgClass.innerHTML = classes.map(c => `<option value="${c}">${c}</option>`).join('');
+
+        let cfgSub = document.getElementById("configSubjectSelect");
+        if(cfgSub) cfgSub.innerHTML = availableSubjects.map(s => `<option value="${s}">${s}</option>`).join('');
+
+        let tpSelect = document.getElementById("timePeriodSelect");
+        if(tpSelect) tpSelect.innerHTML = periods.map(p => `<option value="${p}">الدرس ${p} (الحالي: ${periodTimes[p] || ''})</option>`).join('');
+    }
+
+    function loadPeriodTimeInput() {
+        let pId = document.getElementById("timePeriodSelect").value;
+        let inputField = document.getElementById("customPeriodTimeInput");
+        if(inputField && periodTimes[pId]) {
+            inputField.value = periodTimes[pId];
+        }
+    }
+
+    function savePeriodTime() {
+        let pId = document.getElementById("timePeriodSelect").value;
+        let newTime = document.getElementById("customPeriodTimeInput").value.trim();
+        if(pId && newTime) {
+            periodTimes[pId] = newTime;
+            updateDropdowns();
+            renderHeader();
+            showNotification(`تم تحديث وقت الدرس (${pId}) إلى: ${newTime}`);
+        }
+    }
+
+    function saveSubjectQuota() {
+        let cName = document.getElementById("configClassSelect").value;
+        let sName = document.getElementById("configSubjectSelect").value;
+        let count = parseInt(document.getElementById("configSubjectCount").value) || 1;
+
+        if(cName && sName) {
+            if(!subjectQuotas[cName]) subjectQuotas[cName] = {};
+            subjectQuotas[cName][sName] = count;
+            showNotification(`تم تحديث أنصبة مادة (${sName}) للصف (${cName}).`);
+        }
     }
 
     function changeTeacherView() {
         let tId = document.getElementById("teacherViewSelect").value;
+        currentTeacherId = tId;
         let t = teachers.find(item => item.id == tId);
         currentPrintFilter = { type: 'teacher', id: tId };
         document.getElementById("tableTitle").innerText = `جدول الحصص الأسبوعي - المعلم: ${t ? t.name : ''}`;
@@ -472,6 +818,7 @@
             availableSubjects.push(sName);
             updateDropdowns();
             document.getElementById("newSubjectName").value = '';
+            showNotification(`تمت إضافة مادة جديدة: ${sName}`);
         }
     }
 
@@ -479,16 +826,21 @@
         let sName = document.getElementById("deleteSubjectSelect").value;
         availableSubjects = availableSubjects.filter(s => s !== sName);
         updateDropdowns();
+        showNotification(`تم حذف المادة: ${sName}`);
     }
 
     function addTeacher() {
         let name = document.getElementById("teacherName").value.trim();
+        let restDay = document.getElementById("teacherRestDay").value;
+
         if(name) {
             let color = autoTeacherColors[teachers.length % autoTeacherColors.length];
-            teachers.push({ id: Date.now(), name, color });
+            teachers.push({ id: Date.now(), name, color, restDay });
             updateDropdowns();
             document.getElementById("teacherName").value = '';
+            document.getElementById("teacherRestDay").value = '';
             render();
+            showNotification(`تمت إضافة المعلم الجديد: ${name}`);
         }
     }
 
@@ -497,26 +849,34 @@
         teachers = teachers.filter(t => t.id != tId);
         updateDropdowns();
         render();
+        showNotification(`تم حذف معلم من النظام.`);
     }
 
     function addClass() {
         let cName = document.getElementById("newClassName").value.trim();
         if(cName && !classes.includes(cName)) {
             classes.push(cName);
+            subjectQuotas[cName] = {};
             init();
             document.getElementById("newClassName").value = '';
+            showNotification(`تمت إضافة صف جديد: ${cName}`);
         }
     }
 
     function addPeriod() {
-        periods.push(periods.length + 1);
+        let nextP = periods.length + 1;
+        periods.push(nextP);
+        periodTimes[nextP] = "00:00 - 00:00";
         init();
+        showNotification(`تمت إضافة حصة دراسية جديدة رقم ${nextP}`);
     }
 
     function removePeriod() {
         if (periods.length > 1) {
-            periods.pop();
+            let removedP = periods.pop();
+            delete periodTimes[removedP];
             init();
+            showNotification(`تم حذف الحصة الأخيرة من الجدول.`);
         }
     }
 
@@ -530,6 +890,11 @@
         let t = teachers.find(item => item.id == tId);
         if(!t) return;
 
+        if(t.restDay && t.restDay === d) {
+            alert(`⚠️ عذراً، اليوم (${d}) هو يوم عطلة مخصص لهذا المعلم (${t.name})!`);
+            return;
+        }
+
         if(!schedule[d]) schedule[d] = {};
         if(!schedule[d][p]) schedule[d][p] = {};
         
@@ -541,12 +906,14 @@
             color: t.color
         };
         render();
+        showNotification(`تم تعديل وتثبيت جدول يوم (${d}) - الدرس (${p}) للصف (${c}).`);
     }
 
     function removeSingleCell(day, period, className) {
         if(schedule[day]?.[period]?.[className]) {
             delete schedule[day][period][className];
             render();
+            showNotification(`تم حذف درس (${className}) في يوم (${day}).`);
         }
     }
 
@@ -565,6 +932,7 @@
         if(confirm("هل أنت تأكد من مسح كافة الدروس المسجلة في الجدول؟")) {
             schedule = {};
             init();
+            showNotification(`تم مسح وتصفير الجدول المدرسي بالكامل.`);
         }
     }
 
@@ -573,7 +941,7 @@
             periods.forEach(p => {
                 let used = new Set();
                 classes.forEach(c => {
-                    let avail = teachers.filter(t => !used.has(t.id));
+                    let avail = teachers.filter(t => !used.has(t.id) && t.restDay !== d);
                     if(avail.length && availableSubjects.length) {
                         let t = avail[Math.floor(Math.random() * avail.length)];
                         let subject = availableSubjects[Math.floor(Math.random() * availableSubjects.length)];
@@ -591,11 +959,17 @@
             });
         });
         render();
+        showNotification(`تم إعادة التوزيع التلقائي الذكي لكافة الجداول بنجاح.`);
     }
 
     function renderHeader() {
         let tr = document.getElementById("tableHeader");
-        tr.innerHTML = `<th>اليوم</th>` + periods.map(p => `<th>الدرس ${p}</th>`).join('');
+        tr.innerHTML = `<th>اليوم / الوقت</th>` + periods.map(p => `
+            <th>
+                الدرس ${p}
+                <span class="period-time">${periodTimes[p] || ''}</span>
+            </th>
+        `).join('');
     }
 
     function render() {
@@ -627,7 +1001,7 @@
                         }
                     } else {
                         if(cell) {
-                            let actionButtons = currentUserRole === 'admin' ? `
+                            let actionButtons = currentUserRole === 'programmer' ? `
                                 <div class="card-actions no-print">
                                     <button class="btn btn-orange btn-sm" onclick="prepareEditCell('${d}', ${p}, '${c}')">✏️</button>
                                     <button class="btn btn-red btn-sm" onclick="removeSingleCell('${d}', ${p}, '${c}')">❌</button>
@@ -667,7 +1041,82 @@
         processPDFDownload(`جدول_${className}.pdf`);
     }
 
-    function processPDFDownload(fileName) {
+    function exportTeachersReportPDF() {
+        let originalContent = document.getElementById("printArea").innerHTML;
+        let originalTitle = document.getElementById("tableTitle").innerText;
+
+        let reportHTML = `
+            <div class="school-header">
+                <h2>إدارة مدرسة براعم الغد الابتدائية المختلطة</h2>
+                <h4>تقرير أنصبة المعلمين والمواد الدراسية</h4>
+            </div>
+            <div class="table-wrap">
+                <table style="width:100%; border-collapse: collapse; text-align: right; background: #ffffff;">
+                    <thead>
+                        <tr style="background: #f1f5f9;">
+                            <th style="border: 1.5px solid #0f172a; padding: 8px; text-align: center;">ت</th>
+                            <th style="border: 1.5px solid #0f172a; padding: 8px;">اسم المعلم</th>
+                            <th style="border: 1.5px solid #0f172a; padding: 8px;">المادة الدراسية</th>
+                            <th style="border: 1.5px solid #0f172a; padding: 8px; text-align: center;">عدد الحصص بالأسبوع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+        `;
+
+        let counter = 1;
+        teachers.forEach(t => {
+            let subjectsSummary = {};
+            days.forEach(d => {
+                periods.forEach(p => {
+                    classes.forEach(c => {
+                        let cell = schedule[d]?.[p]?.[c];
+                        if(cell && cell.teacherId == t.id) {
+                            subjectsSummary[cell.subject] = (subjectsSummary[cell.subject] || 0) + 1;
+                        }
+                    });
+                });
+            });
+
+            let hasRows = false;
+            Object.keys(subjectsSummary).forEach(sub => {
+                hasRows = true;
+                reportHTML += `
+                    <tr>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; text-align: center;">${counter++}</td>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; font-weight: bold;">${t.name}</td>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px;">${subjectIcons[sub] || '📚'} ${sub}</td>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; text-align: center; font-weight: bold; color: #0284c7;">${subjectsSummary[sub]} حصص</td>
+                    </tr>
+                `;
+            });
+
+            if(!hasRows) {
+                reportHTML += `
+                    <tr>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; text-align: center;">${counter++}</td>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; font-weight: bold;">${t.name}</td>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; color: #64748b;">لم يتم توزيع جدول بعد</td>
+                        <td style="border: 1.5px solid #0f172a; padding: 6px; text-align: center;">-</td>
+                    </tr>
+                `;
+            }
+        });
+
+        reportHTML += `
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        document.getElementById("printArea").innerHTML = reportHTML;
+        processPDFDownload('تقرير_حصص_المعلمين.pdf', () => {
+            document.getElementById("printArea").innerHTML = originalContent;
+            document.getElementById("tableTitle").innerText = originalTitle;
+            render();
+        });
+    }
+
+    function processPDFDownload(fileName, callback) {
         document.body.classList.add('pdf-mode');
         const element = document.getElementById('printArea');
         
@@ -676,47 +1125,16 @@
             filename:     fileName,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true },
-            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'landscape' }
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
         html2pdf().set(opt).from(element).save().then(() => {
             document.body.classList.remove('pdf-mode');
+            if(callback) callback();
         });
     }
 
     init();
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}</script>
+</script>
 </body>
 </html>
-
-<!-- شريط الإشعار التفاعلي عند وجود تحديث -->
-<div id="update-toast" style="display:none; position:fixed; bottom:20px; right:20px; left:20px; background:#323232; color:#fff; padding:15px; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.3); justify-content:space-between; align-items:center; z-index:9999;">
-  <span>تتوفر تحديثات جديدة للجدول!</span>
-  <button id="reload-btn" style="background:#007bff; color:#fff; border:none; padding:8px 14px; border-radius:5px; cursor:pointer;">تحديث الآن</button>
-</div>
-
-<script>
-  if ('serviceWorker' in navigator) {
-    let newWorker;
-
-    navigator.serviceWorker.register('/sw.js').then((reg) => {
-      reg.addEventListener('updatefound', () => {
-        newWorker = reg.installing;
-        newWorker.addEventListener('statechange', () => {
-          if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-            document.getElementById('update-toast').style.display = 'flex';
-          }
-        });
-      });
-    });
-
-    document.getElementById('reload-btn').addEventListener('click', () => {
-      if (newWorker) {
-        newWorker.postMessage('SKIP_WAITING');
-      }
-      window.location.reload();
-    });
-  }
-</script>
