@@ -1,15 +1,41 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "builds": [
+  "version": 2,
+  "headers": [
     {
-      "src": "public/index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
+      "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        }
+      ]
+    },
     {
-      "src": "/",
-      "dest": "/public/index.html"
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        }
+      ]
+    },
+    {
+      "source": "/service-worker.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0"
+        }
+      ]
     }
   ]
 }
